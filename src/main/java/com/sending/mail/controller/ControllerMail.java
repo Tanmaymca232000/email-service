@@ -28,13 +28,12 @@ public class ControllerMail {
 	public String sendMail(@ModelAttribute Entity entity,@RequestParam("file") MultipartFile file,HttpSession session)
 	{
 		try {
-		MultipartFile imageFile=entity.getImage();
+		
 		serviceMail.sendMail(entity,file);
-		session.setAttribute("message", "email sucessfully");
+		
 		}
 		catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+						e.printStackTrace();
 			session.setAttribute("message","Failed to send email"+e.getMessage());
 		}
       
